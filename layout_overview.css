@@ -1,0 +1,43 @@
+@import url("layout_base.css");
+
+.grid {
+    display: grid;
+    gap: 4px;
+    height: 100%;
+    grid-template-columns: 0.2fr 0.6fr 0.2fr;
+    grid-template-rows:  max-content 16px 1fr;
+    grid-template-areas: "a b c"
+                         "d e f"
+                         "g h i";
+}
+
+#grid_item_banner {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: aqua;
+}
+
+#banner_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#grid_item_navigation {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#grid_item_content {
+    grid-column: 2;
+    grid-row: 3;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+    gap: 10px;
+
+    overflow-y: auto;
+
+}

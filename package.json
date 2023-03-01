@@ -1,0 +1,35 @@
+{
+  "name": "sfb-landing-page",
+  "version": "1.0.0",
+  "description": "description: TODO",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify index.js -o bundle.js",
+    "build_lazy": "browserify lazy.js -o bundle_lazy.js",
+    "watch": "watchify index.js -o bundle.js",
+    "watch_lazy": "watchify lazy.js -o bundle_lazy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfb-trr191/sfb-trr191.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sfb-trr191/sfb-trr191.github.io/issues"
+  },
+  "homepage": "https://github.com/sfb-trr191/sfb-trr191.github.io#readme",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "watchify": "^4.0.0"
+  },
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "gl-matrix": "^3.3.0",
+    "jszip": "^3.6.0",
+    "mathjs": "^9.4.4",
+    "ml-matrix": "^6.8.0",
+    "seedrandom": "^3.0.5"
+  }
+}
