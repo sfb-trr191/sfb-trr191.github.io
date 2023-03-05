@@ -12,6 +12,16 @@ class ContentManager{
             "https://sfb-trr191.github.io/3-torus-flowvis-tool-tutorial/images/test_main.png",
             "https://sfb-trr191.github.io/3-torus-flowvis-tool/",
             this.lorem_ipsum);
+        this.generateEntry(
+            "Wire Billiards", 
+            "https://upload.wikimedia.org/wikipedia/en/d/d6/Image_coming_soon.png",
+            "https://sfb-trr191.github.io/wire-billiards/",
+            this.lorem_ipsum);
+        this.generateEntry(
+            "TODO", 
+            "https://upload.wikimedia.org/wikipedia/en/d/d6/Image_coming_soon.png",
+            "",
+            this.lorem_ipsum);
         //this.generateEntry("General Kenobi");
     }
 

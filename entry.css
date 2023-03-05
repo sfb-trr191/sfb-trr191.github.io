@@ -14,21 +14,26 @@
   
 .entry_image_wrapper {
     width: 25%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: top;
+    padding-left: 10px; /* add some padding */  
   }
   
 .entry_img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    object-position: center;
+    object-position: top;
+    padding-top: 10px; /* add some padding */  
+    padding-bottom: 10px; /* add some padding */   
   }
   
   .entry_text_wrapper {
     width: 75%;
+    height: 100%;
+    padding-top: 14px; /* add some padding */    
     padding-left: 10px; /* add some padding */    
     padding-right: 10px; /* add some padding */    
     text-align: justify;
