@@ -14,7 +14,7 @@
 #grid_item_banner {
     grid-column: 2;
     grid-row: 1;
-    background-color: aqua;
+    background-color: white;
 }
 
 #banner_image {
@@ -27,6 +27,7 @@
 #grid_item_navigation {
     grid-column: 2;
     grid-row: 2;
+    background-color: white;
 }
 
 #grid_item_content {
@@ -39,5 +40,44 @@
     gap: 10px;
 
     overflow-y: auto;
+    background-color: white;
 
+}
+
+#title_1{
+    text-align: right;
+    color: #000088;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 28px;
+    margin: 4px 0px 0px 0px;
+}
+
+#title_2{
+    position:relative;
+    text-align: right;
+    z-index: 2;
+    color: #000088;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 28px;
+    margin: -10px 0px 0px 0px;
+    right: 0px;
+    top: 25px;
+    width: max-content;
+}
+
+#title_3{
+    text-align: center;
+    color: #000088;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 28px;
+    margin: 4px 0px 0px 0px;
 }
