@@ -10,7 +10,7 @@ class ContentManager{
         this.generateEntry(
             "3-Torus FlowVis Tool", 
             "https://sfb-trr191.github.io/3-torus-flowvis-tool-tutorial/images/test_main.png",
-            "https://sfb-trr191.github.io/3-torus-flowvis-tool/",
+            "3-torus-flowvis-tool.html",
             this.lorem_ipsum);
         this.generateEntry(
             "Wire Billiards", 
@@ -25,7 +25,7 @@ class ContentManager{
         //this.generateEntry("General Kenobi");
     }
 
-    generateEntry(display_name, image_url, link_url){
+    generateEntry(display_name, image_url, link_url, description){
         var entry_main_container = document.createElement("div");
         entry_main_container.className = "entry_main_container";
 
@@ -50,7 +50,7 @@ class ContentManager{
 
         var node_description = document.createElement("div");
         node_description.className = "description";
-        node_description.innerText = this.lorem_ipsum;
+        node_description.innerText = description;
         entry_text_wrapper.appendChild(node_description);
 
 

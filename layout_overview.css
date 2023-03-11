@@ -40,6 +40,7 @@
     gap: 10px;
 
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: white;
 
 }
@@ -71,8 +72,11 @@
     width: max-content;
 }
 
-#title_3{
+#title_software_projects{
     text-align: center;
+    align-self: center;
+    display: block;
+    width: 100%;
     color: #000088;
     font-family: times new roman,times,serif;
     font-style: italic;
