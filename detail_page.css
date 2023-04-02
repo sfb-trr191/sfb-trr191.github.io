@@ -1,6 +1,6 @@
 .image_wrapper {
     width: 100%;
-    height: 250px;
+    height: 275px;
     display: flex;
     justify-content: center;
     align-items: top;
@@ -15,6 +15,11 @@
     padding-top: 10px; /* add some padding */  
     padding-bottom: 10px; /* add some padding */   
   }
+
+.image_link{
+    margin: 4px 4px 4px 4px;
+    height: 250px;
+}
 
 #project_title{
     color: #000088;
