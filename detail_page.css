@@ -40,3 +40,7 @@ h2{
     font-size: 22px;
     margin: 4px 0px 0px 0px;
 }
+
+.detail_text_wrapper{
+    text-align: justify;
+}
