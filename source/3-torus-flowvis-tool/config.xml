@@ -1,0 +1,12 @@
+<root project_title="Web-Based Flow Visualization in Riemannian Manifolds" project_image="state_teaser_main.png">
+    <images>
+        <image file="state_teaser_main.png"/>
+        <image file="state_taimanov_non_degenerate_main_no_ftle.png"/>
+        <image file="state_tunnel_main.png"/>
+        <image file="state_comparison_nil_flow.png"/>
+        <image file="screenshot_tool.png"/>
+    </images>
+    <links>
+        <link name="Web-Tool" href="https://sfb-trr191.github.io/3-torus-flowvis-tool/"/>  
+    </links>
+</root>

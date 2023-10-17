@@ -1,6 +1,6 @@
 .image_wrapper {
     width: 100%;
-    height: 275px;
+    max-height: 275px;
     display: flex;
     justify-content: center;
     align-items: top;
@@ -12,13 +12,12 @@
     max-height: 100%;
     object-fit: contain;
     object-position: top;
-    padding-top: 10px; /* add some padding */  
-    padding-bottom: 10px; /* add some padding */   
+    padding-top: 0px; /* add some padding */  
+    padding-bottom: 0px; /* add some padding */   
   }
 
 .image_link{
     margin: 4px 4px 4px 4px;
-    height: 250px;
 }
 
 #project_title{

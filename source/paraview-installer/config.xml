@@ -1,0 +1,8 @@
+<root project_title="TODO Paraview Installer" project_image="todo">
+    <images>
+        <image file="screenshot_tool.png"/>
+    </images>
+    <links>
+        <link name="TODO Installer" href="https://google.com"/>  
+    </links>
+</root>
