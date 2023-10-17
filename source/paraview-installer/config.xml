@@ -1,6 +1,6 @@
-<root project_title="TODO Paraview Installer" project_image="todo">
+<root project_title="Paraview Installer" project_image="todo">
     <authors>
-        <author name="Leonard Marks"/>
+        <author name="Leonard Marks" href="https://vcg.iwr.uni-heidelberg.de/people/marks/"/>
     </authors>
     <images>
         <image file="screenshot_tool.png"/>

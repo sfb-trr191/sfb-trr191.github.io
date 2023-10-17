@@ -1,9 +1,9 @@
 <root project_title="Web-Based Flow Visualization in Riemannian Manifolds" project_image="state_teaser_main.png">
     <authors>
-        <author name="Christian Lang"/>
-        <author name="Egzon Miftari"/>
-        <author name="Peter Albers"/>
-        <author name="Filip Sadlo"/>
+        <author name="Christian Lang" href="https://vcg.iwr.uni-heidelberg.de/people/lang/"/>
+        <author name="Egzon Miftari" href="https://vcg.iwr.uni-heidelberg.de/people/miftari/"/>
+        <author name="Peter Albers" href=""/>
+        <author name="Filip Sadlo" href="https://vcg.iwr.uni-heidelberg.de/people/sadlo/"/>
     </authors>
     <images>
         <image file="state_teaser_main.png"/>

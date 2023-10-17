@@ -6,6 +6,7 @@ directory_source_str = "source/"
 directory_project_str = "project/"
 template_html_str = directory_template_str + "template.html"
 image_html_str = directory_template_str + "image.html"
+author_html_str = directory_template_str + "author.html"
 link_html_str = directory_template_str + "link.html" 
 template_index_html_str = directory_template_str + "index.html"
 project_entry_html_str = directory_template_str + "project_entry.html" 
@@ -62,11 +63,14 @@ def InsertFromConfigXML(code, dir_source):
     first_author = True
     for link in node_authors.findall("author"):
         name = link.get("name")
-        if first_author:
-            code_authors += name
-            first_author = False
-        else:
-            code_authors += ", "+name
+        href = link.get("href")
+        if not first_author:
+            code_authors += ", "        
+        author_code = ReadContent(author_html_str)
+        author_code = author_code.replace("$AUTHOR_HREF$", href)
+        author_code = author_code.replace("$AUTHOR_NAME$", name)
+        code_authors += author_code        
+        first_author = False        
     code_authors += "]"
     code = code.replace("$AUTHORS$", code_authors)
 
@@ -121,13 +125,15 @@ def GenerateProjectEntry(dir_source, page_link):
     first_author = True
     for link in node_authors.findall("author"):
         name = link.get("name")
-        if first_author:
-            code_authors += name
-            first_author = False
-        else:
-            code_authors += ", "+name
+        href = link.get("href")
+        if not first_author:
+            code_authors += ", "        
+        author_code = ReadContent(author_html_str)
+        author_code = author_code.replace("$AUTHOR_HREF$", href)
+        author_code = author_code.replace("$AUTHOR_NAME$", name)
+        code_authors += author_code        
+        first_author = False        
     code_authors += "]"
-
     entry = entry.replace("$AUTHORS$", code_authors)
 
     entry = Insert(entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")

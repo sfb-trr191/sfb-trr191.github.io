@@ -22,7 +22,11 @@
     margin-bottom: 10px; /* add some padding */   
   }
   
-  .entry_text_wrapper {
+.entry_title{
+    font-size: 20px;
+}
+
+.entry_text_wrapper {
     width: 85%;
     height: 100%;
     margin-top: 14px; /* add some padding */    
