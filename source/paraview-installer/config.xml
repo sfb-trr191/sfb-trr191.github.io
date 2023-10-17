@@ -1,4 +1,7 @@
 <root project_title="TODO Paraview Installer" project_image="todo">
+    <authors>
+        <author name="Leonard Marks"/>
+    </authors>
     <images>
         <image file="screenshot_tool.png"/>
     </images>

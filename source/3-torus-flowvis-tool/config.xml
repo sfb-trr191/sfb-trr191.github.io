@@ -1,4 +1,10 @@
 <root project_title="Web-Based Flow Visualization in Riemannian Manifolds" project_image="state_teaser_main.png">
+    <authors>
+        <author name="Christian Lang"/>
+        <author name="Egzon Miftari"/>
+        <author name="Peter Albers"/>
+        <author name="Filip Sadlo"/>
+    </authors>
     <images>
         <image file="state_teaser_main.png"/>
         <image file="state_taimanov_non_degenerate_main_no_ftle.png"/>

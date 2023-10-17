@@ -57,6 +57,19 @@ def InsertFromConfigXML(code, dir_source):
         code_links += link_code
     code = code.replace("$LINKS$", code_links)
 
+    node_authors = root.find("authors")
+    code_authors = "["
+    first_author = True
+    for link in node_authors.findall("author"):
+        name = link.get("name")
+        if first_author:
+            code_authors += name
+            first_author = False
+        else:
+            code_authors += ", "+name
+    code_authors += "]"
+    code = code.replace("$AUTHORS$", code_authors)
+
     return code
 
 def ReadContent(path):
@@ -102,6 +115,20 @@ def GenerateProjectEntry(dir_source, page_link):
     entry = entry.replace("$PROJECT_LINK$", page_link)
     image_path = "../"+dir_source+project_image
     entry = entry.replace("$PROJECT_IMAGE$", image_path)
+
+    node_authors = root.find("authors")
+    code_authors = "["
+    first_author = True
+    for link in node_authors.findall("author"):
+        name = link.get("name")
+        if first_author:
+            code_authors += name
+            first_author = False
+        else:
+            code_authors += ", "+name
+    code_authors += "]"
+
+    entry = entry.replace("$AUTHORS$", code_authors)
 
     entry = Insert(entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
 
