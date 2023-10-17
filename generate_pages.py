@@ -7,6 +7,8 @@ directory_project_str = "project/"
 template_html_str = directory_template_str + "template.html"
 image_html_str = directory_template_str + "image.html"
 link_html_str = directory_template_str + "link.html" 
+template_index_html_str = directory_template_str + "index.html"
+project_entry_html_str = directory_template_str + "project_entry.html" 
 
 def GeneratePages():
     print("GeneratePages")
@@ -71,5 +73,40 @@ def Insert(code, marker, path):
     code = code.replace(marker, content)
     return code
 
+def GenerateIndex():
+    print("GenerateIndex:")
+    path_index = "index.html"
+    print("path_index:", path_index)
+    code = ReadContent(template_index_html_str)
+
+    code_entries = ""
+    for dir in os.listdir(directory_source_str):
+        dir_source = directory_source_str + dir + "/"
+        page_link = directory_project_str + dir + ".html"
+        print("source:", dir_source)
+        code_entries += GenerateProjectEntry(dir_source, page_link)
+    code = code.replace("$PROJECT_ENTRIES$", code_entries)
+
+    with open(path_index, "w") as f_out:
+        f_out.write(code)
+
+def GenerateProjectEntry(dir_source, page_link):
+
+    entry = ReadContent(project_entry_html_str)
+
+    tree = ET.parse(dir_source+"config.xml")
+    root = tree.getroot()
+    project_title = root.get("project_title")
+    project_image = root.get("project_image")
+    entry = entry.replace("$PROJECT_TITLE$", project_title)
+    entry = entry.replace("$PROJECT_LINK$", page_link)
+    image_path = "../"+dir_source+project_image
+    entry = entry.replace("$PROJECT_IMAGE$", image_path)
+
+    entry = Insert(entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
+
+    return entry
+
 if __name__ == '__main__':
     GeneratePages()
+    GenerateIndex()
