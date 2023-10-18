@@ -43,3 +43,7 @@ h2{
 .detail_text_wrapper{
     text-align: justify;
 }
+
+.detail_links{
+    text-align: left;
+}
