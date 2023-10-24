@@ -10,6 +10,8 @@ author_html_str = directory_template_str + "author.html"
 link_html_str = directory_template_str + "link.html" 
 template_index_html_str = directory_template_str + "index.html"
 project_entry_html_str = directory_template_str + "project_entry.html" 
+template_gallery_html_str = directory_template_str + "gallery.html"
+template_videos_html_str = directory_template_str + "videos.html"
 
 def GeneratePages():
     print("GeneratePages")
@@ -140,6 +142,45 @@ def GenerateProjectEntry(dir_source, page_link):
 
     return entry
 
+
+def GenerateGallery():
+    print("GenerateGallery:")
+    path_gallery = "gallery.html"
+    print("path_gallery:", path_gallery)
+    code = ReadContent(template_gallery_html_str)
+
+    #code_entries = ""
+    #for dir in os.listdir(directory_source_str):
+    #    dir_source = directory_source_str + dir + "/"
+    #    page_link = directory_project_str + dir + ".html"
+    #    print("source:", dir_source)
+    #    code_entries += GenerateProjectEntry(dir_source, page_link)
+    code = code.replace("$GALLERY_ENTRIES$", "")
+
+    with open(path_gallery, "w") as f_out:
+        f_out.write(code)
+
+def GenerateVideos():
+    print("GenerateVideos:")
+    path_videos = "videos.html"
+    print("path_videos:", path_videos)
+    code = ReadContent(template_videos_html_str)
+
+    #code_entries = ""
+    #for dir in os.listdir(directory_source_str):
+    #    dir_source = directory_source_str + dir + "/"
+    #    page_link = directory_project_str + dir + ".html"
+    #    print("source:", dir_source)
+    #    code_entries += GenerateProjectEntry(dir_source, page_link)
+    code = code.replace("$VIDEO_ENTRIES$", "")
+
+    with open(path_videos, "w") as f_out:
+        f_out.write(code)
+
+
+
 if __name__ == '__main__':
     GeneratePages()
     GenerateIndex()
+    GenerateGallery()
+    GenerateVideos()
