@@ -13,6 +13,32 @@ project_entry_html_str = directory_template_str + "project_entry.html"
 template_gallery_html_str = directory_template_str + "gallery.html"
 template_videos_html_str = directory_template_str + "videos.html"
 
+#########################################################################################
+#
+#   HELPER FUNCTIONS
+#
+#########################################################################################
+
+def ReadContent(path):
+    content = ""
+    with open(path) as f:
+        content = f.read()
+    return content
+
+def Insert(code, marker, path):
+    print("Insert:", path)
+    content = ""
+    with open(path) as f:
+        content = f.read()
+    code = code.replace(marker, content)
+    return code
+
+#########################################################################################
+#
+#   PROJECT PAGE
+#
+#########################################################################################
+
 def GeneratePages():
     print("GeneratePages")
     for dir in os.listdir(directory_source_str):
@@ -78,19 +104,11 @@ def InsertFromConfigXML(code, dir_source):
 
     return code
 
-def ReadContent(path):
-    content = ""
-    with open(path) as f:
-        content = f.read()
-    return content
-
-def Insert(code, marker, path):
-    print("Insert:", path)
-    content = ""
-    with open(path) as f:
-        content = f.read()
-    code = code.replace(marker, content)
-    return code
+#########################################################################################
+#
+#   INDEX PAGE
+#
+#########################################################################################
 
 def GenerateIndex():
     print("GenerateIndex:")
@@ -142,6 +160,11 @@ def GenerateProjectEntry(dir_source, page_link):
 
     return entry
 
+#########################################################################################
+#
+#   GALLERY PAGE
+#
+#########################################################################################
 
 def GenerateGallery():
     print("GenerateGallery:")
@@ -160,6 +183,12 @@ def GenerateGallery():
     with open(path_gallery, "w") as f_out:
         f_out.write(code)
 
+#########################################################################################
+#
+#   VIDEOS PAGE
+#
+#########################################################################################
+
 def GenerateVideos():
     print("GenerateVideos:")
     path_videos = "videos.html"
@@ -177,7 +206,11 @@ def GenerateVideos():
     with open(path_videos, "w") as f_out:
         f_out.write(code)
 
-
+#########################################################################################
+#
+#   MAIN
+#
+#########################################################################################
 
 if __name__ == '__main__':
     GeneratePages()
