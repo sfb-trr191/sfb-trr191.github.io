@@ -78,3 +78,36 @@
     font-size: 28px;
     margin: 4px 0px 0px 0px;
 }
+
+.tabs{
+    grid-column: 3;
+    grid-row: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: max-content;
+}
+
+.tab_active{
+    background-color: #390687;
+}
+
+.tab_inactive{
+    background-color: #a3a3a3;
+}
+
+.tab_active a{
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+    align-self: center;
+    display: block;
+}
+
+.tab_inactive a{
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+    align-self: center;
+    display: block;
+}
