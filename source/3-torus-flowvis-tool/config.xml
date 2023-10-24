@@ -1,4 +1,5 @@
 <root project_title="Web-Based Flow Visualization in Riemannian Manifolds" project_image="state_teaser_main.png">
+    <status project_start_date="2019-09-01" project_completion_date=""/>
     <authors>
         <author name="Christian Lang" href="https://vcg.iwr.uni-heidelberg.de/people/lang/"/>
         <author name="Egzon Miftari" href="https://vcg.iwr.uni-heidelberg.de/people/miftari/"/>

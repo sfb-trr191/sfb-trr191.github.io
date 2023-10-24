@@ -33,6 +33,16 @@ def Insert(code, marker, path):
     code = code.replace(marker, content)
     return code
 
+class Project:
+    def __init__(self, project_title, project_start_date, project_completion_date, index_entry):
+        self.project_title = project_title
+        self.project_start_date = project_start_date
+        self.project_completion_date = project_completion_date
+        self.index_entry = index_entry
+
+    def __repr__(self):
+        return repr((self.project_title, self.project_start_date, self.project_completion_date))
+
 #########################################################################################
 #
 #   PROJECT PAGE
@@ -68,7 +78,9 @@ def InsertFromConfigXML(code, dir_source):
     code_images = ""
     for image in node_images.findall("image"):
         file_name = image.get("file")
-        image_path = "../"+dir_source+file_name
+        image_path = "../todo.png"
+        if file_name:
+            image_path = "../"+dir_source+file_name        
         print("image_path", image_path)
         image_code = ReadContent(image_html_str)
         image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
@@ -110,18 +122,39 @@ def InsertFromConfigXML(code, dir_source):
 #
 #########################################################################################
 
-def GenerateIndex():
+def GenerateListProjects():
+    print("GenerateListProjects:")
+    list_projects_ongoing = []
+    list_projects_completed = []
+    for dir in os.listdir(directory_source_str):
+        dir_source = directory_source_str + dir + "/"
+        page_link = directory_project_str + dir + ".html"
+        project = GenerateProjectEntry(dir_source, page_link)
+        if not project.project_completion_date:
+            list_projects_ongoing.append(project)
+        else:
+            list_projects_completed.append(project)
+
+    list_projects_ongoing = sorted(list_projects_ongoing, key=lambda project: project.project_title)
+    list_projects_completed = sorted(list_projects_completed, key=lambda project: project.project_completion_date, reverse=True)
+    return list_projects_ongoing, list_projects_completed
+
+def GenerateIndex(list_projects_ongoing, list_projects_completed):
     print("GenerateIndex:")
     path_index = "index.html"
     print("path_index:", path_index)
     code = ReadContent(template_index_html_str)
 
     code_entries = ""
-    for dir in os.listdir(directory_source_str):
-        dir_source = directory_source_str + dir + "/"
-        page_link = directory_project_str + dir + ".html"
-        print("source:", dir_source)
-        code_entries += GenerateProjectEntry(dir_source, page_link)
+    #for dir in os.listdir(directory_source_str):
+    #    dir_source = directory_source_str + dir + "/"
+    #    page_link = directory_project_str + dir + ".html"
+    #    print("source:", dir_source)
+    #    code_entries += GenerateProjectEntry(dir_source, page_link).index_entry
+    for project in list_projects_ongoing:
+        code_entries += project.index_entry
+    for project in list_projects_completed:
+        code_entries += project.index_entry
     code = code.replace("$PROJECT_ENTRIES$", code_entries)
 
     with open(path_index, "w") as f_out:
@@ -129,16 +162,23 @@ def GenerateIndex():
 
 def GenerateProjectEntry(dir_source, page_link):
 
-    entry = ReadContent(project_entry_html_str)
+    index_entry = ReadContent(project_entry_html_str)
 
     tree = ET.parse(dir_source+"config.xml")
     root = tree.getroot()
     project_title = root.get("project_title")
     project_image = root.get("project_image")
-    entry = entry.replace("$PROJECT_TITLE$", project_title)
-    entry = entry.replace("$PROJECT_LINK$", page_link)
-    image_path = "../"+dir_source+project_image
-    entry = entry.replace("$PROJECT_IMAGE$", image_path)
+
+    node_project_status = root.find("status")
+    project_start_date = node_project_status.get("project_start_date")
+    project_completion_date = node_project_status.get("project_completion_date")
+
+    index_entry = index_entry.replace("$PROJECT_TITLE$", project_title)
+    index_entry = index_entry.replace("$PROJECT_LINK$", page_link)
+    image_path = "../todo.png"
+    if project_image:
+        image_path = "../"+dir_source+project_image
+    index_entry = index_entry.replace("$PROJECT_IMAGE$", image_path)
 
     node_authors = root.find("authors")
     code_authors = "["
@@ -154,11 +194,16 @@ def GenerateProjectEntry(dir_source, page_link):
         code_authors += author_code        
         first_author = False        
     code_authors += "]"
-    entry = entry.replace("$AUTHORS$", code_authors)
 
-    entry = Insert(entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
+    if project_completion_date:
+        code_authors += "(" + project_start_date + " until " + project_completion_date + ")"
 
-    return entry
+    index_entry = index_entry.replace("$AUTHORS$", code_authors)
+
+    index_entry = Insert(index_entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
+
+    project = Project(project_title, project_start_date, project_completion_date, index_entry)
+    return project
 
 #########################################################################################
 #
@@ -214,6 +259,9 @@ def GenerateVideos():
 
 if __name__ == '__main__':
     GeneratePages()
-    GenerateIndex()
+    list_projects_ongoing, list_projects_completed = GenerateListProjects()
+    print("ongoing:", list_projects_ongoing)
+    print("completed:", list_projects_completed)
+    GenerateIndex(list_projects_ongoing, list_projects_completed)
     GenerateGallery()
     GenerateVideos()

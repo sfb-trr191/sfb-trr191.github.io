@@ -1,0 +1,12 @@
+<root project_title="Test 2" project_image="">
+    <status project_start_date="2021-02-01" project_completion_date="2021-08-30"/>
+    <authors>
+        <author name="Christian Lang" href="https://vcg.iwr.uni-heidelberg.de/people/lang/"/>
+    </authors>
+    <images>
+        <image file=""/>
+    </images>
+    <links>
+        <link name="TODO Installer" href="https://google.com"/>  
+    </links>
+</root>

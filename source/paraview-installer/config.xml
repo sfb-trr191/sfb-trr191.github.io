@@ -1,9 +1,10 @@
-<root project_title="Paraview Installer" project_image="todo">
+<root project_title="Paraview Installer" project_image="">
+    <status project_start_date="" project_completion_date=""/>
     <authors>
         <author name="Leonard Marks" href="https://vcg.iwr.uni-heidelberg.de/people/marks/"/>
     </authors>
     <images>
-        <image file="screenshot_tool.png"/>
+        <image file=""/>
     </images>
     <links>
         <link name="TODO Installer" href="https://google.com"/>  
