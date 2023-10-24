@@ -9,6 +9,8 @@ image_html_str = directory_template_str + "image.html"
 author_html_str = directory_template_str + "author.html"
 link_html_str = directory_template_str + "link.html" 
 template_index_html_str = directory_template_str + "index.html"
+index_ongoing_html_str = directory_template_str + "index_ongoing.html"
+index_completed_html_str = directory_template_str + "index_completed.html"
 project_entry_html_str = directory_template_str + "project_entry.html" 
 template_gallery_html_str = directory_template_str + "gallery.html"
 template_videos_html_str = directory_template_str + "videos.html"
@@ -145,7 +147,7 @@ def GenerateIndex(list_projects_ongoing, list_projects_completed):
     print("path_index:", path_index)
     code = ReadContent(template_index_html_str)
 
-    code_entries = ""
+    code_entries = ReadContent(index_ongoing_html_str)
     #for dir in os.listdir(directory_source_str):
     #    dir_source = directory_source_str + dir + "/"
     #    page_link = directory_project_str + dir + ".html"
@@ -153,6 +155,7 @@ def GenerateIndex(list_projects_ongoing, list_projects_completed):
     #    code_entries += GenerateProjectEntry(dir_source, page_link).index_entry
     for project in list_projects_ongoing:
         code_entries += project.index_entry
+    code_entries += ReadContent(index_completed_html_str)
     for project in list_projects_completed:
         code_entries += project.index_entry
     code = code.replace("$PROJECT_ENTRIES$", code_entries)
