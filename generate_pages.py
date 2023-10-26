@@ -13,6 +13,7 @@ index_ongoing_html_str = directory_template_str + "index_ongoing.html"
 index_completed_html_str = directory_template_str + "index_completed.html"
 project_entry_html_str = directory_template_str + "project_entry.html" 
 template_gallery_html_str = directory_template_str + "gallery.html"
+gallery_image_html_str = directory_template_str + "gallery_image.html"
 template_videos_html_str = directory_template_str + "videos.html"
 
 #########################################################################################
@@ -36,11 +37,12 @@ def Insert(code, marker, path):
     return code
 
 class Project:
-    def __init__(self, project_title, project_start_date, project_completion_date, index_entry):
+    def __init__(self, project_title, project_start_date, project_completion_date, index_entry, gallery_images):
         self.project_title = project_title
         self.project_start_date = project_start_date
         self.project_completion_date = project_completion_date
         self.index_entry = index_entry
+        self.gallery_images = gallery_images
 
     def __repr__(self):
         return repr((self.project_title, self.project_start_date, self.project_completion_date))
@@ -205,7 +207,21 @@ def GenerateProjectEntry(dir_source, page_link):
 
     index_entry = Insert(index_entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
 
-    project = Project(project_title, project_start_date, project_completion_date, index_entry)
+
+
+    node_images = root.find("images")
+    gallery_images = ""
+    for image in node_images.findall("image"):
+        file_name = image.get("file")
+        if file_name:
+            image_path = "../"+dir_source+file_name        
+            print("image_path", image_path)
+            image_code = ReadContent(gallery_image_html_str)
+            image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
+            image_code = image_code.replace("$PROJECT_LINK$", page_link)
+            gallery_images += image_code
+
+    project = Project(project_title, project_start_date, project_completion_date, index_entry, gallery_images)
     return project
 
 #########################################################################################
@@ -214,7 +230,7 @@ def GenerateProjectEntry(dir_source, page_link):
 #
 #########################################################################################
 
-def GenerateGallery():
+def GenerateGallery(list_projects_ongoing, list_projects_completed):
     print("GenerateGallery:")
     path_gallery = "gallery.html"
     print("path_gallery:", path_gallery)
@@ -226,7 +242,14 @@ def GenerateGallery():
     #    page_link = directory_project_str + dir + ".html"
     #    print("source:", dir_source)
     #    code_entries += GenerateProjectEntry(dir_source, page_link)
-    code = code.replace("$GALLERY_ENTRIES$", "")
+    code_images = ""
+    for project in list_projects_ongoing:
+        code_images += project.gallery_images
+    #code_entries += ReadContent(index_completed_html_str)
+    for project in list_projects_completed:
+        code_images += project.gallery_images
+
+    code = code.replace("$GALLERY_ENTRIES$", code_images)
 
     with open(path_gallery, "w") as f_out:
         f_out.write(code)
@@ -266,5 +289,5 @@ if __name__ == '__main__':
     print("ongoing:", list_projects_ongoing)
     print("completed:", list_projects_completed)
     GenerateIndex(list_projects_ongoing, list_projects_completed)
-    GenerateGallery()
+    GenerateGallery(list_projects_ongoing, list_projects_completed)
     GenerateVideos()
