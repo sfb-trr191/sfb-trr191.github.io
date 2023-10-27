@@ -98,7 +98,13 @@
 
 .tab_active a{
     color: #ffffff;
-    font-size: 28px;
+
+    font-size: 30px;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+
     text-align: center;
     align-self: center;
     display: block;
@@ -106,8 +112,29 @@
 
 .tab_inactive a{
     color: #ffffff;
-    font-size: 28px;
+
+    font-size: 30px;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+
     text-align: center;
     align-self: center;
     display: block;
+}
+
+
+
+
+
+h2{
+    color: #000088;
+    font-family: times new roman,times,serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: normal;
+    font-size: 30px;
+    margin: 4px 0px 0px 0px;
+    height: 40px;
 }
