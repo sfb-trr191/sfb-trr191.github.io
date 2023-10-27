@@ -30,7 +30,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: max-content;
-    gap: 10px;
+    gap: 2px;
 
     overflow-y: auto;
     overflow-x: hidden;
