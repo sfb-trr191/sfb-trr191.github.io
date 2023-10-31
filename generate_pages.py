@@ -1,4 +1,5 @@
 import os
+import os.path
 import xml.etree.ElementTree as ET
 
 directory_template_str = "template/"
@@ -31,8 +32,9 @@ def ReadContent(path):
 def Insert(code, marker, path):
     print("Insert:", path)
     content = ""
-    with open(path) as f:
-        content = f.read()
+    if os.path.isfile(path):
+        with open(path) as f:
+            content = f.read()
     code = code.replace(marker, content)
     return code
 
@@ -214,11 +216,13 @@ def GenerateProjectEntry(dir_source, page_link):
     for image in node_images.findall("image"):
         file_name = image.get("file")
         if file_name:
-            image_path = "../"+dir_source+file_name        
+            image_path = "../"+dir_source+file_name  
+            image_description_path = (dir_source+file_name).replace(".png", ".txt")    
             print("image_path", image_path)
             image_code = ReadContent(gallery_image_html_str)
             image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
             image_code = image_code.replace("$PROJECT_LINK$", page_link)
+            image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
             gallery_images += image_code
 
     project = Project(project_title, project_start_date, project_completion_date, index_entry, gallery_images)
