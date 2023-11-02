@@ -222,6 +222,7 @@ def GenerateProjectEntry(dir_source, page_link):
             image_code = ReadContent(gallery_image_html_str)
             image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
             image_code = image_code.replace("$PROJECT_LINK$", page_link)
+            image_code = image_code.replace("$PROJECT_TITLE$", project_title)
             image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
             gallery_images += image_code
 
