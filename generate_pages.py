@@ -85,11 +85,14 @@ def InsertFromConfigXML(code, dir_source):
     for image in node_images.findall("image"):
         file_name = image.get("file")
         image_path = "../todo.png"
+        image_description_path = ""
         if file_name:
             image_path = "../"+dir_source+file_name        
+            image_description_path = (dir_source+file_name).replace(".png", ".txt") 
         print("image_path", image_path)
         image_code = ReadContent(image_html_str)
         image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
+        image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
         code_images += image_code
     code = code.replace("$IMAGES$", code_images)
 
