@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>sfb-trr191</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="layout_random_image.css" rel="stylesheet" type="text/css" />
+    <link href="entry.css" rel="stylesheet" type="text/css" />
+    <base target="_parent">
+    <!--
+    <script src="bundle.js" type="text/javascript"> </script>
+    -->
+</head>
+
+<body>
+    <div id="gallery_container">
+        <div class="gallery_entry">
+            <a id="image_link" class="image_link" href="">
+                <img id="gallery_img" class="gallery_img" src="../todo.png">
+            </a>
+            <div class="tooltip-container">
+                <div id="tooltip-text" class="tooltip-text">
+                    
+                </div>
+                <div class="tooltip-empty-space">
+                    
+                </div>
+                <div id="tooltip-project" class="tooltip-project">                
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var list = [$LIST_IMAGE_DATA$]
+        var random_element = list[Math.floor((Math.random()*list.length))]
+        document.getElementById("tooltip-text").innerHTML = random_element.image_description;
+        document.getElementById("tooltip-project").innerHTML = random_element.project_title;
+        document.getElementById("image_link").href = random_element.project_link;
+        document.getElementById("gallery_img").src = random_element.image_link;
+    </script> 
+</body>
+
+</html>

@@ -16,6 +16,8 @@ project_entry_html_str = directory_template_str + "project_entry.html"
 template_gallery_html_str = directory_template_str + "gallery.html"
 gallery_image_html_str = directory_template_str + "gallery_image.html"
 template_videos_html_str = directory_template_str + "videos.html"
+template_random_image_html_str = directory_template_str + "random_image.html"
+image_data_js_str = directory_template_str + "image_data.js"
 
 #########################################################################################
 #
@@ -38,16 +40,35 @@ def Insert(code, marker, path):
     code = code.replace(marker, content)
     return code
 
+def Read(path):
+    print("Read:", path)
+    content = ""
+    if os.path.isfile(path):
+        with open(path) as f:
+            content = f.read()
+    return content
+
 class Project:
-    def __init__(self, project_title, project_start_date, project_completion_date, index_entry, gallery_images):
+    def __init__(self, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data):
         self.project_title = project_title
         self.project_start_date = project_start_date
         self.project_completion_date = project_completion_date
         self.index_entry = index_entry
         self.gallery_images = gallery_images
+        self.list_image_data = list_image_data
 
     def __repr__(self):
         return repr((self.project_title, self.project_start_date, self.project_completion_date))
+
+class ImageData:
+    def __init__(self, project_title, image_description, project_link, image_link):
+        self.project_title = project_title
+        self.image_description = image_description
+        self.project_link = project_link
+        self.image_link = image_link
+
+    def __repr__(self):
+        return repr((self.project_title, self.image_description, self.project_link, self.image_link))
 
 #########################################################################################
 #
@@ -135,6 +156,7 @@ def GenerateListProjects():
     print("GenerateListProjects:")
     list_projects_ongoing = []
     list_projects_completed = []
+    list_image_data = []
     for dir in os.listdir(directory_source_str):
         dir_source = directory_source_str + dir + "/"
         page_link = directory_project_str + dir + ".html"
@@ -143,10 +165,12 @@ def GenerateListProjects():
             list_projects_ongoing.append(project)
         else:
             list_projects_completed.append(project)
+        for image_data in project.list_image_data:
+            list_image_data.append(image_data)
 
     list_projects_ongoing = sorted(list_projects_ongoing, key=lambda project: project.project_title)
     list_projects_completed = sorted(list_projects_completed, key=lambda project: project.project_completion_date, reverse=True)
-    return list_projects_ongoing, list_projects_completed
+    return list_projects_ongoing, list_projects_completed, list_image_data
 
 def GenerateIndex(list_projects_ongoing, list_projects_completed):
     print("GenerateIndex:")
@@ -216,6 +240,7 @@ def GenerateProjectEntry(dir_source, page_link):
 
     node_images = root.find("images")
     gallery_images = ""
+    list_image_data = []
     for image in node_images.findall("image"):
         file_name = image.get("file")
         if file_name:
@@ -229,7 +254,10 @@ def GenerateProjectEntry(dir_source, page_link):
             image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
             gallery_images += image_code
 
-    project = Project(project_title, project_start_date, project_completion_date, index_entry, gallery_images)
+            image_description = Read(image_description_path)
+            list_image_data.append(ImageData(project_title, image_description, page_link, image_path))
+
+    project = Project(project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data)
     return project
 
 #########################################################################################
@@ -287,15 +315,50 @@ def GenerateVideos():
 
 #########################################################################################
 #
+#   RANDOM IMAGE PAGE
+#
+#########################################################################################
+
+def GenerateRandomImage(list_image_data):
+    print("GenerateRandomImage:")
+    path_random_image = "random_image.html"
+    print("path_random_image:", path_random_image)
+    code = ReadContent(template_random_image_html_str)
+
+    code_image_data = ""
+    first = True
+    for image_data in list_image_data:
+        if not first:
+            code_image_data += ","
+        image_code = ReadContent(image_data_js_str)
+        image_code = image_code.replace("$PROJECT_TITLE$", image_data.project_title)
+        image_code = image_code.replace("$IMAGE_DESCRIPTION$", image_data.image_description)
+        image_code = image_code.replace("$PROJECT_LINK$", image_data.project_link)
+        image_code = image_code.replace("$IMAGE_FULL_PATH$", image_data.image_link)
+        code_image_data += image_code
+        first = False
+
+    code = code.replace("$LIST_IMAGE_DATA$", code_image_data)
+
+    print("")
+    for image_data in list_image_data:
+        print(image_data)
+
+    with open(path_random_image, "w") as f_out:
+        f_out.write(code)
+
+#########################################################################################
+#
 #   MAIN
 #
 #########################################################################################
 
 if __name__ == '__main__':
     GeneratePages()
-    list_projects_ongoing, list_projects_completed = GenerateListProjects()
+    list_projects_ongoing, list_projects_completed, list_image_data = GenerateListProjects()
     print("ongoing:", list_projects_ongoing)
     print("completed:", list_projects_completed)
     GenerateIndex(list_projects_ongoing, list_projects_completed)
     GenerateGallery(list_projects_ongoing, list_projects_completed)
     GenerateVideos()
+    GenerateRandomImage(list_image_data)

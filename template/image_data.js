@@ -1,0 +1,1 @@
+{project_title:"$PROJECT_TITLE$", image_description:"$IMAGE_DESCRIPTION$", project_link:"$PROJECT_LINK$", image_link:"$IMAGE_FULL_PATH$"}
