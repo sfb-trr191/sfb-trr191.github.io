@@ -63,11 +63,12 @@ h2{
     align-content: flex-start;
     gap: 5px; /* Adjust the gap between images as needed */
 
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .gallery_entry{
-    margin: 4px;
+    height: 180px;
+    width: auto;
     position: relative;
 }
 
