@@ -10,6 +10,7 @@ image_html_str = directory_template_str + "image.html"
 author_html_str = directory_template_str + "author.html"
 link_html_str = directory_template_str + "link.html" 
 template_index_html_str = directory_template_str + "index.html"
+template_student_projects_html_str = directory_template_str + "student-projects.html"
 index_ongoing_html_str = directory_template_str + "index_ongoing.html"
 index_completed_html_str = directory_template_str + "index_completed.html"
 project_entry_html_str = directory_template_str + "project_entry.html" 
@@ -184,11 +185,10 @@ def GenerateListProjects():
     list_student_projects_completed = sorted(list_student_projects_completed, key=lambda project: project.project_completion_date, reverse=True)
     return list_projects_ongoing, list_projects_completed, list_student_projects_ongoing, list_student_projects_completed, list_image_data
 
-def GenerateIndex(list_projects_ongoing, list_projects_completed):
+def GenerateIndex(path_page, path_template, list_projects_ongoing, list_projects_completed):
     print("GenerateIndex:")
-    path_index = "index.html"
-    print("path_index:", path_index)
-    code = ReadContent(template_index_html_str)
+    print("path_page:", path_page)
+    code = ReadContent(path_template)
 
     code_entries = ReadContent(index_ongoing_html_str)
     #for dir in os.listdir(directory_source_str):
@@ -203,7 +203,7 @@ def GenerateIndex(list_projects_ongoing, list_projects_completed):
         code_entries += project.index_entry
     code = code.replace("$PROJECT_ENTRIES$", code_entries)
 
-    with open(path_index, "w") as f_out:
+    with open(path_page, "w") as f_out:
         f_out.write(code)
 
 def GenerateProjectEntry(dir_source, page_link):
@@ -279,23 +279,20 @@ def GenerateProjectEntry(dir_source, page_link):
 #
 #########################################################################################
 
-def GenerateGallery(list_projects_ongoing, list_projects_completed):
+def GenerateGallery(list_projects_ongoing, list_projects_completed, list_student_projects_ongoing, list_student_projects_completed):
     print("GenerateGallery:")
     path_gallery = "gallery.html"
     print("path_gallery:", path_gallery)
     code = ReadContent(template_gallery_html_str)
 
-    #code_entries = ""
-    #for dir in os.listdir(directory_source_str):
-    #    dir_source = directory_source_str + dir + "/"
-    #    page_link = directory_project_str + dir + ".html"
-    #    print("source:", dir_source)
-    #    code_entries += GenerateProjectEntry(dir_source, page_link)
     code_images = ""
     for project in list_projects_ongoing:
         code_images += project.gallery_images
-    #code_entries += ReadContent(index_completed_html_str)
     for project in list_projects_completed:
+        code_images += project.gallery_images
+    for project in list_student_projects_ongoing:
+        code_images += project.gallery_images
+    for project in list_student_projects_completed:
         code_images += project.gallery_images
 
     code = code.replace("$GALLERY_ENTRIES$", code_images)
@@ -373,7 +370,8 @@ if __name__ == '__main__':
     print("completed:", list_projects_completed)
     print("student ongoing:", list_student_projects_ongoing)
     print("student completed:", list_student_projects_completed)
-    GenerateIndex(list_projects_ongoing, list_projects_completed)
-    GenerateGallery(list_projects_ongoing, list_projects_completed)
+    GenerateIndex("index.html", template_index_html_str, list_projects_ongoing, list_projects_completed)
+    GenerateIndex("student-projects.html", template_student_projects_html_str, list_student_projects_ongoing, list_student_projects_completed)
+    GenerateGallery(list_projects_ongoing, list_projects_completed, list_student_projects_ongoing, list_student_projects_completed)
     GenerateVideos()
     GenerateRandomImage(list_image_data)
