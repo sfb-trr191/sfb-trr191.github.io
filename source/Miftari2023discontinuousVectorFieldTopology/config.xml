@@ -9,6 +9,8 @@
         <image file="image.png"/>
     </images>
     <links>
+        <link name="BibTex" href="https://vcg.iwr.uni-heidelberg.de/publications/bibtex/Miftari2023discontinuousVectorFieldTopology/"/>  
         <link name="PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Miftari2023discontinuousTopology.pdf"/>  
+        <link name="VCG project page" href="https://vcg.iwr.uni-heidelberg.de/publications/pubdetails/Miftari2023discontinuousVectorFieldTopology/"/>  
     </links>
 </root>
