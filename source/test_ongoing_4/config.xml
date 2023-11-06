@@ -1,5 +1,5 @@
-<root project_title="Test 1" project_image="" project_type="financed">
-    <status project_start_date="2020-01-01" project_completion_date="2020-06-30"/>
+<root project_title="Test 4" project_image="" project_type="Practical">
+    <status project_start_date="2021-02-01" project_completion_date=""/>
     <authors>
         <author name="Christian Lang" href="https://vcg.iwr.uni-heidelberg.de/people/lang/"/>
     </authors>

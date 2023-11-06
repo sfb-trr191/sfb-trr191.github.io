@@ -2,6 +2,8 @@ import os
 import os.path
 import xml.etree.ElementTree as ET
 
+list_keywords_financed_project = ["financed", "Financed"]
+
 directory_template_str = "template/"
 directory_source_str = "source/"
 directory_project_str = "project/"
@@ -13,6 +15,7 @@ template_index_html_str = directory_template_str + "index.html"
 template_student_projects_html_str = directory_template_str + "student-projects.html"
 index_ongoing_html_str = directory_template_str + "index_ongoing.html"
 index_completed_html_str = directory_template_str + "index_completed.html"
+project_entry_student_html_str = directory_template_str + "project_entry_student.html" 
 project_entry_html_str = directory_template_str + "project_entry.html" 
 template_gallery_html_str = directory_template_str + "gallery.html"
 gallery_image_html_str = directory_template_str + "gallery_image.html"
@@ -25,6 +28,9 @@ image_data_js_str = directory_template_str + "image_data.js"
 #   HELPER FUNCTIONS
 #
 #########################################################################################
+
+def IsProjectFinanced(project_type):
+    return project_type in list_keywords_financed_project
 
 def ReadContent(path):
     content = ""
@@ -167,7 +173,7 @@ def GenerateListProjects():
         project = GenerateProjectEntry(dir_source, page_link)
         for image_data in project.list_image_data:
             list_image_data.append(image_data)
-        if project.project_type == "financed":
+        if IsProjectFinanced(project.project_type):
             if not project.project_completion_date:
                 list_projects_ongoing.append(project)
             else:
@@ -207,9 +213,6 @@ def GenerateIndex(path_page, path_template, list_projects_ongoing, list_projects
         f_out.write(code)
 
 def GenerateProjectEntry(dir_source, page_link):
-
-    index_entry = ReadContent(project_entry_html_str)
-
     tree = ET.parse(dir_source+"config.xml")
     root = tree.getroot()
     project_title = root.get("project_title")
@@ -220,8 +223,15 @@ def GenerateProjectEntry(dir_source, page_link):
     project_start_date = node_project_status.get("project_start_date")
     project_completion_date = node_project_status.get("project_completion_date")
 
+    index_entry = ""
+    if IsProjectFinanced(project_type):
+        index_entry = ReadContent(project_entry_html_str)
+    else:
+        index_entry = ReadContent(project_entry_student_html_str)
+
     index_entry = index_entry.replace("$PROJECT_TITLE$", project_title)
     index_entry = index_entry.replace("$PROJECT_LINK$", page_link)
+    index_entry = index_entry.replace("$PROJECT_TYPE$", project_type)
     image_path = "../todo.png"
     if project_image:
         image_path = "../"+dir_source+project_image
