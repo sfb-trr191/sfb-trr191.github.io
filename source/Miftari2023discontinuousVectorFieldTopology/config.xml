@@ -1,0 +1,14 @@
+<root project_title="Visualization of Discontinuous Vector Field Topology" project_image="image.png" project_type="financed">
+    <status project_start_date="2019-09-01" project_completion_date=""/>
+    <authors>
+        <author name="Egzon Miftari" href="https://vcg.iwr.uni-heidelberg.de/people/miftari/"/>
+        <author name="Daniel Durstewitz" href=""/>
+        <author name="Filip Sadlo" href="https://vcg.iwr.uni-heidelberg.de/people/sadlo/"/>
+    </authors>
+    <images>
+        <image file="image.png"/>
+    </images>
+    <links>
+        <link name="PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Miftari2023discontinuousTopology.pdf"/>  
+    </links>
+</root>

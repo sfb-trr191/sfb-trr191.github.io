@@ -171,7 +171,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows:  min-content 1fr min-content;
-    gap: 10px;
+    gap: 0px;
 }
 
 .gallery_entry:hover .tooltip-container{
@@ -182,7 +182,7 @@
     grid-column: 1;
     grid-row: 1;
 
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     margin-top: 0px;
     margin-left: 2px;

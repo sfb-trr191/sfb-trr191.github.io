@@ -1,0 +1,1 @@
+Discontinuous vector field with repelling sliding flow (red LIC). Equivalence streamsets (white) are separated by stable (blue) and unstable (red) manifolds. Equitrices (violet) separate streamsets of different dimensionality.
