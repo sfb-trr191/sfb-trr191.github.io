@@ -49,7 +49,8 @@ def Read(path):
     return content
 
 class Project:
-    def __init__(self, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data):
+    def __init__(self, project_type, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data):
+        self.project_type = project_type
         self.project_title = project_title
         self.project_start_date = project_start_date
         self.project_completion_date = project_completion_date
@@ -58,7 +59,7 @@ class Project:
         self.list_image_data = list_image_data
 
     def __repr__(self):
-        return repr((self.project_title, self.project_start_date, self.project_completion_date))
+        return repr((self.project_type, self.project_title, self.project_start_date, self.project_completion_date))
 
 class ImageData:
     def __init__(self, project_title, image_description, project_link, image_link):
@@ -156,21 +157,32 @@ def GenerateListProjects():
     print("GenerateListProjects:")
     list_projects_ongoing = []
     list_projects_completed = []
+    list_student_projects_ongoing = []
+    list_student_projects_completed = []
     list_image_data = []
     for dir in os.listdir(directory_source_str):
         dir_source = directory_source_str + dir + "/"
         page_link = directory_project_str + dir + ".html"
         project = GenerateProjectEntry(dir_source, page_link)
-        if not project.project_completion_date:
-            list_projects_ongoing.append(project)
-        else:
-            list_projects_completed.append(project)
         for image_data in project.list_image_data:
             list_image_data.append(image_data)
+        if project.project_type == "financed":
+            if not project.project_completion_date:
+                list_projects_ongoing.append(project)
+            else:
+                list_projects_completed.append(project)
+        else:
+            if not project.project_completion_date:
+                list_student_projects_ongoing.append(project)
+            else:
+                list_student_projects_completed.append(project)   
+
 
     list_projects_ongoing = sorted(list_projects_ongoing, key=lambda project: project.project_title)
     list_projects_completed = sorted(list_projects_completed, key=lambda project: project.project_completion_date, reverse=True)
-    return list_projects_ongoing, list_projects_completed, list_image_data
+    list_student_projects_ongoing = sorted(list_student_projects_ongoing, key=lambda project: project.project_title)
+    list_student_projects_completed = sorted(list_student_projects_completed, key=lambda project: project.project_completion_date, reverse=True)
+    return list_projects_ongoing, list_projects_completed, list_student_projects_ongoing, list_student_projects_completed, list_image_data
 
 def GenerateIndex(list_projects_ongoing, list_projects_completed):
     print("GenerateIndex:")
@@ -202,6 +214,7 @@ def GenerateProjectEntry(dir_source, page_link):
     root = tree.getroot()
     project_title = root.get("project_title")
     project_image = root.get("project_image")
+    project_type = root.get("project_type")
 
     node_project_status = root.find("status")
     project_start_date = node_project_status.get("project_start_date")
@@ -257,7 +270,7 @@ def GenerateProjectEntry(dir_source, page_link):
             image_description = Read(image_description_path)
             list_image_data.append(ImageData(project_title, image_description, page_link, image_path))
 
-    project = Project(project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data)
+    project = Project(project_type, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data)
     return project
 
 #########################################################################################
@@ -355,9 +368,11 @@ def GenerateRandomImage(list_image_data):
 
 if __name__ == '__main__':
     GeneratePages()
-    list_projects_ongoing, list_projects_completed, list_image_data = GenerateListProjects()
+    list_projects_ongoing, list_projects_completed, list_student_projects_ongoing, list_student_projects_completed, list_image_data = GenerateListProjects()
     print("ongoing:", list_projects_ongoing)
     print("completed:", list_projects_completed)
+    print("student ongoing:", list_student_projects_ongoing)
+    print("student completed:", list_student_projects_completed)
     GenerateIndex(list_projects_ongoing, list_projects_completed)
     GenerateGallery(list_projects_ongoing, list_projects_completed)
     GenerateVideos()
