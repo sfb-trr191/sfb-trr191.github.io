@@ -1,0 +1,22 @@
+<root project_title="Local Extraction of 3D Time-Dependent Vector Field Topology" project_image="image.png" project_type="financed">
+    <status project_start_date="" project_completion_date="2021-06-29"/>
+    <authors>
+        <author name="Lutz Hofmann" href="https://vcg.iwr.uni-heidelberg.de/people/hofmann/"/>
+        <author name="Filip Sadlo" href="https://vcg.iwr.uni-heidelberg.de/people/sadlo/"/>
+    </authors>
+    <images>
+        <image file="Hofmann2021local3Dtopology_1.png"/>
+    </images>
+    <links>
+        <link name="BibTex" href="https://vcg.iwr.uni-heidelberg.de/publications/bibtex/Hofmann2021local3Dtopology/"/>  
+        <link name="DOI" href="http://dx.doi.org/10.1111/cgf.14293"/>  
+        <link name="PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology.pdf"/>  
+        <link name="Highres PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_highres.pdf"/>  
+        <link name="Technical Addendum" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_supp_1.pdf"/>  
+        <link name="Video" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_video_1.mp4"/>  
+        <link name="Video" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_fastforward.mp4"/>  
+        <link name="Talk" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_talk.mp4"/>  
+        <link name="Slides" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2021local3Dtopology_slides.pptx"/>  
+        <link name="VCG project page" href="https://vcg.iwr.uni-heidelberg.de/publications/pubdetails/Hofmann2021local3Dtopology/"/>  
+    </links>
+</root>

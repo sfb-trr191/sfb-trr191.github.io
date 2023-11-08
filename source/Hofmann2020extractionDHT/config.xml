@@ -1,0 +1,23 @@
+<root project_title="Extraction of Distinguished Hyperbolic Trajectories for 2D Time-Dependent Vector Field Topology" project_image="image.png" project_type="financed">
+    <status project_start_date="" project_completion_date="2020-07-18"/>
+    <authors>
+        <author name="Lutz Hofmann" href="https://vcg.iwr.uni-heidelberg.de/people/hofmann/"/>
+        <author name="Filip Sadlo" href="https://vcg.iwr.uni-heidelberg.de/people/sadlo/"/>
+    </authors>
+    <images>
+        <image file="Hofmann2020extractionDHT_1.png"/>
+        <image file="Hofmann2020extractionDHT_2.png"/>
+    </images>
+    <links>
+        <link name="BibTex" href="https://vcg.iwr.uni-heidelberg.de/publications/bibtex/Hofmann2020extractionDHT/"/>  
+        <link name="DOI" href="http://dx.doi.org/10.1111/cgf.13982"/>  
+        <link name="PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer/?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT.pdf"/>  
+        <link name="Highres PDF" href="https://vcg.iwr.uni-heidelberg.de/publications/disclaimer?url=https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT_highres.pdf"/>  
+        <link name="Technical Addendum" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT_supp_1.pdf"/>  
+        <link name="Video" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT_video_1.mp4"/>  
+        <link name="Talk" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT_talk.avi"/>  
+        <link name="Slides" href="https://vcg.iwr.uni-heidelberg.de/static/publications/Hofmann2020extractionDHT_slides.pptx"/>  
+        <link name="Code" href="https://github.com/lhofmann/eurovis2020_hyperbolic_trajectories"/>          
+        <link name="VCG project page" href="https://vcg.iwr.uni-heidelberg.de/publications/pubdetails/Hofmann2020extractionDHT/"/>  
+    </links>
+</root>

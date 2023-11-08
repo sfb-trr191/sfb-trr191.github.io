@@ -1,0 +1,4 @@
+Time-dependent vector field topology of the von Kármán Vortex Street dataset at t=0.5 s, defined by attracting/repelling Lagrangian
+coherent structures (LCS, blue/red surfaces), obtained as streak manifolds seeded along hyperbolic path surfaces (time slice by green lines).
+Our local extraction yields a geometric representation of the temporal evolution of the LCS, which is consistent with ridges in the backward-
+(blue) and forward-time (red) FTLE fields. Sections of the FTLE fields shown in the back half, streak manifolds clipped at the top for clarity.
