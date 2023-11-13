@@ -1,10 +1,11 @@
-<root project_title="Paraview Installer" project_image="" project_type="financed">
+<root project_title="Paraview Installer" project_image="image.jpg" project_type="financed">
     <status project_start_date="" project_completion_date=""/>
     <authors>
         <author name="Leonard Marks" href="https://vcg.iwr.uni-heidelberg.de/people/marks/"/>
     </authors>
     <images>
-        <image file=""/>
+        <image file="image.jpg"/>
+        <image file="image2.jpg"/>
     </images>
     <links>
         <link name="TODO Installer" href="https://google.com"/>  

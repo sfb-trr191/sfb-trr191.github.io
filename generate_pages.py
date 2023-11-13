@@ -118,6 +118,7 @@ def InsertFromConfigXML(code, dir_source):
         if file_name:
             image_path = "../"+dir_source+file_name        
             image_description_path = (dir_source+file_name).replace(".png", ".txt") 
+            image_description_path = image_description_path.replace(".jpg", ".txt")    
         print("image_path", image_path)
         image_code = ReadContent(image_html_str)
         image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
@@ -272,6 +273,7 @@ def GenerateProjectEntry(dir_source, page_link):
         if file_name:
             image_path = "../"+dir_source+file_name  
             image_description_path = (dir_source+file_name).replace(".png", ".txt")    
+            image_description_path = image_description_path.replace(".jpg", ".txt")    
             print("image_path", image_path)
             image_code = ReadContent(gallery_image_html_str)
             image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
