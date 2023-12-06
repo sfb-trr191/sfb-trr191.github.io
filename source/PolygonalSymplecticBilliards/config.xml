@@ -1,0 +1,14 @@
+<root project_title="Polygonal Symplectic Billiards" project_image="image.png" project_type="financed">
+    <status project_start_date="2021-09-01" project_completion_date=""/>
+    <authors>
+        <author name="Fabian Lander" href=""/>
+        <author name="Jannik M. Westermann" href=""/>
+        <author name="Peter Albers" href="https://www.mathi.uni-heidelberg.de/people/personeninfo.html?uid=palbers"/>
+    </authors>
+    <images>
+        <image file="image.png"/>
+    </images>
+    <links>
+        <link name="Repository" href=""/>    
+    </links>
+</root>

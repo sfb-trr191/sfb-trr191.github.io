@@ -1,0 +1,1 @@
+A periodic orbit in a pair of polygons visualized by connecting the "even and odd trajectories"
