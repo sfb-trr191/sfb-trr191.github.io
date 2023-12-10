@@ -34,7 +34,7 @@ def IsProjectFinanced(project_type):
 
 def ReadContent(path):
     content = ""
-    with open(path) as f:
+    with open(path, encoding="utf8") as f:
         content = f.read()
     return content
 
@@ -42,7 +42,7 @@ def Insert(code, marker, path):
     print("Insert:", path)
     content = ""
     if os.path.isfile(path):
-        with open(path) as f:
+        with open(path, encoding="utf8") as f:
             content = f.read()
     code = code.replace(marker, content)
     return code
@@ -51,7 +51,7 @@ def Read(path):
     print("Read:", path)
     content = ""
     if os.path.isfile(path):
-        with open(path) as f:
+        with open(path, encoding="utf8") as f:
             content = f.read()
     return content
 
@@ -100,7 +100,7 @@ def GeneratePage(dir, dir_source, path_out):
     code = InsertFromConfigXML(code, dir_source)
 
     code = Insert(code, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
-    with open(path_out, "w") as f_out:
+    with open(path_out, "w", encoding="utf8") as f_out:
         f_out.write(code)
 
 def InsertFromConfigXML(code, dir_source):
@@ -210,7 +210,7 @@ def GenerateIndex(path_page, path_template, list_projects_ongoing, list_projects
         code_entries += project.index_entry
     code = code.replace("$PROJECT_ENTRIES$", code_entries)
 
-    with open(path_page, "w") as f_out:
+    with open(path_page, "w", encoding="utf8") as f_out:
         f_out.write(code)
 
 def GenerateProjectEntry(dir_source, page_link):
@@ -312,7 +312,7 @@ def GenerateGallery(list_projects_ongoing, list_projects_completed, list_student
 
     code = code.replace("$GALLERY_ENTRIES$", code_images)
 
-    with open(path_gallery, "w") as f_out:
+    with open(path_gallery, "w", encoding="utf8") as f_out:
         f_out.write(code)
 
 #########################################################################################
@@ -335,7 +335,7 @@ def GenerateVideos():
     #    code_entries += GenerateProjectEntry(dir_source, page_link)
     code = code.replace("$VIDEO_ENTRIES$", "")
 
-    with open(path_videos, "w") as f_out:
+    with open(path_videos, "w", encoding="utf8") as f_out:
         f_out.write(code)
 
 #########################################################################################
@@ -369,7 +369,7 @@ def GenerateRandomImage(list_image_data):
     for image_data in list_image_data:
         print(image_data)
 
-    with open(path_random_image, "w") as f_out:
+    with open(path_random_image, "w", encoding="utf8") as f_out:
         f_out.write(code)
 
 #########################################################################################

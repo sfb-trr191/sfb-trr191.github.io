@@ -1,0 +1,15 @@
+<root project_title="Visualization of Symplectic and Euclidean Billiards in Polygons and Bézier Curves" project_image="the_quad_bezier_symplectic_50.png" project_type="Practical">
+    <status project_start_date="2023-08-04" project_completion_date="2023-12-06"/>
+    <authors>
+        <author name="Denise Becker" href=""/>
+        <author name="Robin Hoffmann" href=""/>
+    </authors>
+    <images>
+        <image file="the_quad_bezier_symplectic_50.png"/>
+        <image file="the_quad_bezier_symplectic_50_scatter_diagram.png"/>
+        <image file="screenshot_tool.png"/>
+    </images>
+    <links>
+        <link name="Repository" href=""/>    
+    </links>
+</root>
