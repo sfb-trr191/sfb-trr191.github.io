@@ -144,10 +144,12 @@ def InsertFromConfigXML(code, dir_source):
         name = link.get("name")
         href = link.get("href")
         if not first_author:
-            code_authors += ", "        
-        author_code = ReadContent(author_html_str)
-        author_code = author_code.replace("$AUTHOR_HREF$", href)
-        author_code = author_code.replace("$AUTHOR_NAME$", name)
+            code_authors += ", "    
+        author_code = name    
+        if href:
+            author_code = ReadContent(author_html_str)
+            author_code = author_code.replace("$AUTHOR_HREF$", href)
+            author_code = author_code.replace("$AUTHOR_NAME$", name)
         code_authors += author_code        
         first_author = False        
     code_authors += "]"
@@ -245,10 +247,12 @@ def GenerateProjectEntry(dir_source, page_link):
         name = link.get("name")
         href = link.get("href")
         if not first_author:
-            code_authors += ", "        
-        author_code = ReadContent(author_html_str)
-        author_code = author_code.replace("$AUTHOR_HREF$", href)
-        author_code = author_code.replace("$AUTHOR_NAME$", name)
+            code_authors += ", "
+        author_code = name    
+        if href:     
+            author_code = ReadContent(author_html_str)
+            author_code = author_code.replace("$AUTHOR_HREF$", href)
+            author_code = author_code.replace("$AUTHOR_NAME$", name)
         code_authors += author_code        
         first_author = False        
     code_authors += "]"
