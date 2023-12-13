@@ -1,0 +1,1 @@
+Example of a pair of polygons that do not admit any periodic orbits.

@@ -1,0 +1,1 @@
+A screenshot of the interactive application displaying symplectic billiards on a pair of polygons.

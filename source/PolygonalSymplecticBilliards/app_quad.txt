@@ -1,0 +1,1 @@
+A screenshot of the interactive application for symplectic billiards in the single polygon setting.
