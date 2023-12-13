@@ -1,0 +1,1 @@
+Outer length billiard for an obtuse triangle with a handpicked selection of trajectories outside the discontinuity set.

@@ -1,0 +1,16 @@
+<root project_title="Outer Length Billiards" project_image="ThumbnailOuterLengthBilliard.png" project_type="financed">
+    <status project_start_date="2022-11-18" project_completion_date=""/>
+    <authors>
+        <author name="Fabian Lander" href=""/>
+        <author name="David Seyboldt" href=""/>
+        <author name="Peter Albers" href="https://www.mathi.uni-heidelberg.de/people/personeninfo.html?uid=palbers"/>
+    </authors>
+    <images>    
+        <image file="ScreenshotOuterLengthTool.png"/>
+        <image file="NonSymmetricOuterLength.png"/>
+        <image file="ObtuseTriangleMultipleTrajectories.png"/>
+    </images>
+    <links>
+        <link name="Repository" href=""/>    
+    </links>
+</root>

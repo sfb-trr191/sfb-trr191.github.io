@@ -1,0 +1,1 @@
+A screenshot of the interactive application for outer length billiard with a regular pentagon and its discontinuity set.
