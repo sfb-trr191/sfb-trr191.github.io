@@ -29,6 +29,13 @@ image_data_js_str = directory_template_str + "image_data.js"
 #
 #########################################################################################
 
+def GetThumbnailPath(path):
+    path_thumbnail = path.replace(".jpg", ".thumbnail.jpg") 
+    path_thumbnail = path.replace(".png", ".thumbnail.jpg")
+    if os.path.isfile(path_thumbnail):
+        return path_thumbnail
+    return path
+
 def IsProjectFinanced(project_type):
     return project_type in list_keywords_financed_project
 
@@ -69,11 +76,12 @@ class Project:
         return repr((self.project_type, self.project_title, self.project_start_date, self.project_completion_date))
 
 class ImageData:
-    def __init__(self, project_title, image_description, project_link, image_link):
+    def __init__(self, project_title, image_description, project_link, image_link, thumbnail_link):
         self.project_title = project_title
         self.image_description = image_description
         self.project_link = project_link
         self.image_link = image_link
+        self.thumbnail_link = thumbnail_link
 
     def __repr__(self):
         return repr((self.project_title, self.image_description, self.project_link, self.image_link))
@@ -114,14 +122,19 @@ def InsertFromConfigXML(code, dir_source):
     for image in node_images.findall("image"):
         file_name = image.get("file")
         image_path = "../todo.png"
+        thumbnail_path = image_path
         image_description_path = ""
         if file_name:
             image_path = "../"+dir_source+file_name        
             image_description_path = (dir_source+file_name).replace(".png", ".txt") 
             image_description_path = image_description_path.replace(".jpg", ".txt")    
+             
+            thumbnail_path = GetThumbnailPath(dir_source+file_name)
+
         print("image_path", image_path)
         image_code = ReadContent(image_html_str)
         image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
+        image_code = image_code.replace("$THUMBNAIL_FULL_PATH$", "../"+thumbnail_path)
         image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
         code_images += image_code
     code = code.replace("$IMAGES$", code_images)
@@ -236,9 +249,11 @@ def GenerateProjectEntry(dir_source, page_link):
     index_entry = index_entry.replace("$PROJECT_LINK$", page_link)
     index_entry = index_entry.replace("$PROJECT_TYPE$", project_type)
     image_path = "../todo.png"
+    thumbnail_path = image_path
     if project_image:
         image_path = "../"+dir_source+project_image
-    index_entry = index_entry.replace("$PROJECT_IMAGE$", image_path)
+        thumbnail_path = GetThumbnailPath(dir_source+project_image)
+    index_entry = index_entry.replace("$PROJECT_THUMBNAIL$", thumbnail_path)
 
     node_authors = root.find("authors")
     code_authors = "["
@@ -278,16 +293,19 @@ def GenerateProjectEntry(dir_source, page_link):
             image_path = "../"+dir_source+file_name  
             image_description_path = (dir_source+file_name).replace(".png", ".txt")    
             image_description_path = image_description_path.replace(".jpg", ".txt")    
+            thumbnail_path = GetThumbnailPath(dir_source+file_name)
+
             print("image_path", image_path)
+            print("thumbnail_path", thumbnail_path)
             image_code = ReadContent(gallery_image_html_str)
-            image_code = image_code.replace("$IMAGE_FULL_PATH$", image_path)
+            image_code = image_code.replace("$THUMBNAIL_FULL_PATH$", thumbnail_path)
             image_code = image_code.replace("$PROJECT_LINK$", page_link)
             image_code = image_code.replace("$PROJECT_TITLE$", project_title)
             image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
             gallery_images += image_code
 
             image_description = Read(image_description_path)
-            list_image_data.append(ImageData(project_title, image_description, page_link, image_path))
+            list_image_data.append(ImageData(project_title, image_description, page_link, image_path, thumbnail_path))
 
     project = Project(project_type, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data)
     return project
@@ -364,6 +382,7 @@ def GenerateRandomImage(list_image_data):
         image_code = image_code.replace("$IMAGE_DESCRIPTION$", image_data.image_description)
         image_code = image_code.replace("$PROJECT_LINK$", image_data.project_link)
         image_code = image_code.replace("$IMAGE_FULL_PATH$", image_data.image_link)
+        image_code = image_code.replace("$THUMBNAIL_FULL_PATH$", image_data.thumbnail_link)
         code_image_data += image_code
         first = False
 
