@@ -1,0 +1,1 @@
+This web-based tool allows the simulation of inverse magnetic billiards, regular billiards and symplectic billiards on polygonal tables in 2D. The program includes a shader-based flow map and FTLE for each billiard type. Furthermore, the phase space can be automatically filled with trajectories.  

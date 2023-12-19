@@ -1,0 +1,1 @@
+FTLE field of a regular triangle.

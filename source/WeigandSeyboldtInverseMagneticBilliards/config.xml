@@ -1,0 +1,15 @@
+<root project_title="Polygonal Inverse Magnetic Billiards" project_image="title_image.jpg" project_type="Practical">
+    <status project_start_date="2023-05-30" project_completion_date="2023-12-06"/>
+    <authors>
+        <author name="Katrin Weigand" href=""/>
+        <author name="David Seyboldt" href=""/>
+    </authors>
+    <images>
+        <image file="FTLE_regular_3gon.jpg"/>
+        <image file="Full_app.jpg"/>
+        <image file="Full_app_regular_7gon.jpg"/>
+    </images>
+    <links>
+        <link name="Web-Tool" href=""/>    
+    </links>
+</root>
