@@ -10,7 +10,8 @@
         <image file="image2.jpg"/>
     </images>
     <links>
-        <link name="Documentation" href="https://sfb-trr191.github.io/crc-paraview-documentation/"/>        
+        <link name="Installer" href="https://sfb-trr191.github.io/crc-paraview-documentation/"/>      
+        <link name="Documentation" href="https://sfb-trr191.github.io/crc-paraview-documentation/"/>       
         <link name="Repository" href="https://github.com/sfb-trr191/crc-paraview/"/>    
     </links>
 </root>
