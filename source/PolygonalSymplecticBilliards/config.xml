@@ -11,7 +11,6 @@
         <image file="non_periodic.png"/>
         <image file="image.png"/>
     </images>
-    <links>
-        <link name="Repository" href=""/>    
+    <links>  
     </links>
 </root>

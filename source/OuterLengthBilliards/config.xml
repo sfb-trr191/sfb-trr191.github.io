@@ -10,7 +10,6 @@
         <image file="NonSymmetricOuterLength.png"/>
         <image file="ObtuseTriangleMultipleTrajectories.png"/>
     </images>
-    <links>
-        <link name="Repository" href=""/>    
+    <links> 
     </links>
 </root>
