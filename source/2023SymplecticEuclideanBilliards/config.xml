@@ -10,6 +10,6 @@
         <image file="screenshot_tool.png"/>
     </images>
     <links>
-        <link name="Web-Tool [TODO]" href=""/>    
+        <link name="Web-Tool" href="https://sfb-trr191.github.io/2023SymplecticEuclideanBilliards/"/>    
     </links>
 </root>
