@@ -272,11 +272,14 @@ def GenerateProjectEntry(dir_source, page_link):
         first_author = False        
     code_authors += "]"
 
+    #if project_completion_date:
+    #    if project_start_date:
+    #        code_authors += "(" + project_start_date + " until " + project_completion_date + ")"
+    #    else:
+    #        code_authors += "(completed: " + project_completion_date + ")"
+
     if project_completion_date:
-        if project_start_date:
-            code_authors += "(" + project_start_date + " until " + project_completion_date + ")"
-        else:
-            code_authors += "(completed: " + project_completion_date + ")"
+        code_authors += "(completed: " + project_completion_date + ")"
 
     index_entry = index_entry.replace("$AUTHORS$", code_authors)
 
