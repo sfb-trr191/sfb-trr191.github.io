@@ -22,6 +22,7 @@ gallery_image_html_str = directory_template_str + "gallery_image.html"
 template_videos_html_str = directory_template_str + "videos.html"
 template_random_image_html_str = directory_template_str + "random_image.html"
 image_data_js_str = directory_template_str + "image_data.js"
+placeholder_todo = "todo_empty_256x128.png"
 
 #########################################################################################
 #
@@ -121,7 +122,7 @@ def InsertFromConfigXML(code, dir_source):
     code_images = ""
     for image in node_images.findall("image"):
         file_name = image.get("file")
-        image_path = "../todo.png"
+        image_path = "../"+placeholder_todo
         thumbnail_path = image_path
         image_description_path = ""
         if file_name:
@@ -248,7 +249,7 @@ def GenerateProjectEntry(dir_source, page_link):
     index_entry = index_entry.replace("$PROJECT_TITLE$", project_title)
     index_entry = index_entry.replace("$PROJECT_LINK$", page_link)
     index_entry = index_entry.replace("$PROJECT_TYPE$", project_type)
-    image_path = "../todo.png"
+    image_path = "../"+placeholder_todo
     thumbnail_path = image_path
     if project_image:
         image_path = "../"+dir_source+project_image
