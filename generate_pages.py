@@ -2,6 +2,9 @@ import os
 import os.path
 import xml.etree.ElementTree as ET
 
+abstract_character_limit = 400
+abstract_reduction_limit = 32
+abstract_character_minimum = abstract_character_limit-abstract_reduction_limit
 list_keywords_financed_project = ["financed", "Financed"]
 
 directory_template_str = "template/"
@@ -42,8 +45,9 @@ def IsProjectFinanced(project_type):
 
 def ReadContent(path):
     content = ""
-    with open(path, encoding="utf8") as f:
-        content = f.read()
+    if os.path.isfile(path):
+        with open(path, encoding="utf8") as f:
+            content = f.read()
     return content
 
 def Insert(code, marker, path):
@@ -66,6 +70,16 @@ def Read(path):
         with open(path, encoding="utf8") as f:
             content = f.read()
     return content
+
+def ShortenAbstract(abstract_text, page_link):
+    abstract_text_short = abstract_text
+    if(len(abstract_text) > abstract_character_limit):
+        i = abstract_character_limit-1
+        while abstract_text[i] != ' ':
+            i-=1
+        i = max(abstract_character_minimum, i)
+        abstract_text_short = abstract_text[:i]+' <a href="'+page_link+'">[read more]</a>'
+    return abstract_text_short
 
 class Project:
     def __init__(self, project_type, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data):
@@ -288,7 +302,11 @@ def GenerateProjectEntry(dir_source, page_link):
 
     index_entry = index_entry.replace("$AUTHORS$", code_authors)
 
-    index_entry = Insert(index_entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
+    #index_entry = Insert(index_entry, "$ABSTRACT_TEXT$", dir_source+"abstract.txt")
+    abstract_text = ReadContent(dir_source+"abstract.txt")
+    abstract_text_short = ShortenAbstract(abstract_text, page_link)
+    index_entry = InsertText(index_entry, "$ABSTRACT_TEXT$", abstract_text_short)
+    
 
 
 
