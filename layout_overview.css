@@ -88,6 +88,15 @@
     grid-template-rows: max-content;
 }
 
+.tabs_full_width{
+    grid-column: 1;
+    grid-row: 1;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+}
+
 .tab_active{
     background-color: #390687;
 }
