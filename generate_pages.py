@@ -55,6 +55,10 @@ def Insert(code, marker, path):
     code = code.replace(marker, content)
     return code
 
+def InsertText(code, marker, content):
+    code = code.replace(marker, content)
+    return code
+
 def Read(path):
     print("Read:", path)
     content = ""
@@ -305,10 +309,12 @@ def GenerateProjectEntry(dir_source, page_link):
             image_code = image_code.replace("$THUMBNAIL_FULL_PATH$", thumbnail_path)
             image_code = image_code.replace("$PROJECT_LINK$", page_link)
             image_code = image_code.replace("$PROJECT_TITLE$", project_title)
-            image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
+            #image_code = Insert(image_code, "$IMAGE_DESCRIPTION$", image_description_path)
+            image_code = InsertText(image_code, "$IMAGE_DESCRIPTION$", "")
             gallery_images += image_code
 
-            image_description = Read(image_description_path)
+            #image_description = Read(image_description_path)
+            image_description = ""
             list_image_data.append(ImageData(project_title, image_description, page_link, image_path, thumbnail_path))
 
     project = Project(project_type, project_title, project_start_date, project_completion_date, index_entry, gallery_images, list_image_data)
