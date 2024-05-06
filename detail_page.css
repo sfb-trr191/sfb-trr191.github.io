@@ -133,3 +133,9 @@ h2{
 
     visibility: hidden;
 }
+
+p{
+    text-indent: 16pt; 
+    margin-top: 0pt; /* between paragraphs */   
+    margin-bottom: 0pt; /* between paragraphs */
+}
