@@ -1,0 +1,14 @@
+<root project_title="Visualization of Integral Curves in Plane Fields" project_image="spiral_saddle_final.png" project_type="Bachelor Thesis">
+    <status project_start_date="" project_completion_date="2022-09-20"/>
+    <authors>
+        <author name="Leonard Marks" href="https://vcg.iwr.uni-heidelberg.de/people/marks/"/>
+    </authors>
+    <images>
+        <image file="spiral_saddle_final.png"/>
+        <image file="spiral_source_final.png"/>
+        <image file="complex_saddle.png"/>
+        <image file="hotroom_vortex.png"/>
+    </images>
+    <links>
+    </links>
+</root>
