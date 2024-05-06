@@ -1,4 +1,4 @@
-<root project_title="Visualization of Line and Skew Fibrations" project_image="" project_type="financed">
+<root project_title="Visualization of Line and Skew Fibrations" project_image="fibration.png" project_type="financed">
     <status project_start_date="" project_completion_date=""/>
     <authors>
         <author name="Leonard Marks" href="https://vcg.iwr.uni-heidelberg.de/people/marks/"/>
@@ -6,6 +6,9 @@
         <author name="Filip Sadlo" href="https://vcg.iwr.uni-heidelberg.de/people/sadlo/"/>
     </authors>
     <images>
+        <image file="fibration.png"/>
+        <image file="fibrationPoint.png"/>
+        <image file="skewRegion.png"/>
     </images>
     <links>
     </links>
