@@ -1,9 +1,13 @@
-<root project_title="Visualization of Overtwisted Disks in R³" project_image="" project_type="Master Thesis">
-    <status project_start_date="" project_completion_date="2024-??-??"/>
+<root project_title="Visualization of Overtwisted Disks in R³" project_image="disk2.png" project_type="Master Thesis">
+    <status project_start_date="" project_completion_date="2023-03-30"/>
     <authors>
         <author name="Marco Kowalzik" href=""/>
     </authors>
     <images>
+        <image file="disk1.png"/>
+        <image file="disk2.png"/>
+        <image file="disk3.png"/>
+        <image file="scalar_field_and_center_line.png"/>
     </images>
     <links>
     </links>

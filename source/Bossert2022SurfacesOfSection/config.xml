@@ -1,9 +1,12 @@
-<root project_title="Visualization of Surfaces of Section" project_image="" project_type="Master Thesis">
+<root project_title="Visualization of Surfaces of Section" project_image="project_image.png" project_type="Master Thesis">
     <status project_start_date="" project_completion_date="2022-12-06"/>
     <authors>
         <author name="Joshua Bossert" href=""/>
     </authors>
     <images>
+        <image file="220-forward-flag-cam18.png"/>
+        <image file="220-graph-sos-cam18.png"/>
+        <image file="220-graph-points.png"/>
     </images>
     <links>
     </links>

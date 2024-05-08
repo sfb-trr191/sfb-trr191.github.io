@@ -1,0 +1,17 @@
+This thesis is about the numerical extraction of overtwisted disks in contact structures
+in R³. Overtwisted disks play an important role in contact geometry as their
+existence distinguishes two different kinds of contact structures, namely the overtwisted
+and the tight contact structures. On the other side they are also useful for
+the visualization of overtwisted contact structures, especially in combination with
+further extracted data, like the region of the contact structure that consists of overtwisted
+disk center points.
+<p>
+We will define and extract pairs of distinguished tangential directions in the
+plane field that are extremal with respect to certainmeasures. These directions then
+serve as a strategy to integrate Legendrian curves on a contact structure which are
+used for the extraction of overtwisted disks. The associated anisotropy fields measure
+the quality of the extracted vector fields and will be also used to determine
+possible center points of overtwisted disks. As the nonintegrability is a key aspect
+of contact structures, we will derive a formula to efficiently calculate a measure for
+the local nonintegrability of a plane fields.
+</p>

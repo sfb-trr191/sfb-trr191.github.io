@@ -1,9 +1,13 @@
-<root project_title="Features in Plane Fields" project_image="" project_type="Master Thesis">
+<root project_title="Features in Plane Fields" project_image="HotroomSolutionTypes.png" project_type="Master Thesis">
     <status project_start_date="" project_completion_date="2022-11-10"/>
     <authors>
         <author name="Clara Hartmann" href=""/>
     </authors>
     <images>
+        <image file="PlaneField.png"/>
+        <image file="HotroomSolutionTypes.png"/>
+        <image file="CrestAntiumbilic.png"/>
+        <image file="ZeroCurv_NC.png"/>
     </images>
     <links>
     </links>
