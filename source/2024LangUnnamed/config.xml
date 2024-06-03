@@ -1,9 +1,10 @@
-<root project_title="Unnamed Project" project_image="" project_type="Practical">
+<root project_title="Visualization of CR3BP Return Maps" project_image="image.png" project_type="Practical">
     <status project_start_date="2021-02-01" project_completion_date=""/>
     <authors>
         <author name="Christian Lang" href="https://vcg.iwr.uni-heidelberg.de/people/lang/"/>
     </authors>
     <images>
+        <image file="image.png"/>
     </images>
     <links>
     </links>
